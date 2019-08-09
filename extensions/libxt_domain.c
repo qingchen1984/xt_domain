@@ -22,6 +22,14 @@ static struct option opts[] = {
 };
 
 static void
+domain_mt_init (struct xt_entry_match *match)
+{
+    struct xt_domain_info *info = (void *)match->data;
+    /* inet_pton(PF_INET, "192.0.2.137", &info->dst.in); */
+}
+
+
+static void
 parse_name (char *name, struct xt_domain_info *info)
 {
 	int i = 0 , char_len = 0;
@@ -106,6 +114,7 @@ static struct xtables_match domain = {
 	.size		= XT_ALIGN(sizeof(struct xt_domain_info)),
 	.userspacesize	= XT_ALIGN(sizeof(struct xt_domain_info)),
 	.help		= help,
+    .init = domain_mt_init,
 	.parse		= parse,
 	.final_check	= final_check,
 	.print		= print,
