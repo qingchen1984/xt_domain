@@ -127,17 +127,19 @@ am__uninstall_files_from_dir = { \
   }
 am__installdirs = "$(DESTDIR)$(libdir)"
 LTLIBRARIES = $(nobase_lib_LTLIBRARIES)
-xtables_libxt_dns_la_LIBADD =
-am_xtables_libxt_dns_la_OBJECTS = xtables_libxt_dns_la-libxt_dns.lo
-xtables_libxt_dns_la_OBJECTS = $(am_xtables_libxt_dns_la_OBJECTS)
+xtables_libxt_domain_la_LIBADD =
+am_xtables_libxt_domain_la_OBJECTS =  \
+	xtables_libxt_domain_la-libxt_domain.lo
+xtables_libxt_domain_la_OBJECTS =  \
+	$(am_xtables_libxt_domain_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-xtables_libxt_dns_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+xtables_libxt_domain_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(xtables_libxt_dns_la_CFLAGS) $(CFLAGS) \
-	$(xtables_libxt_dns_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(xtables_libxt_domain_la_CFLAGS) $(CFLAGS) \
+	$(xtables_libxt_domain_la_LDFLAGS) $(LDFLAGS) -o $@
 am__dirstamp = $(am__leading_dot)dirstamp
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -173,8 +175,8 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(xtables_libxt_dns_la_SOURCES)
-DIST_SOURCES = $(xtables_libxt_dns_la_SOURCES)
+SOURCES = $(xtables_libxt_domain_la_SOURCES)
+DIST_SOURCES = $(xtables_libxt_domain_la_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -319,10 +321,10 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-nobase_lib_LTLIBRARIES = xtables/libxt_dns.la
-xtables_libxt_dns_la_SOURCES = libxt_dns.c
-xtables_libxt_dns_la_CFLAGS = -lresolv -I../include
-xtables_libxt_dns_la_LDFLAGS = -version-info @VERSION_INFO@
+nobase_lib_LTLIBRARIES = xtables/libxt_domain.la
+xtables_libxt_domain_la_SOURCES = libxt_domain.c
+xtables_libxt_domain_la_CFLAGS = -lresolv -I../include
+xtables_libxt_domain_la_LDFLAGS = -version-info @VERSION_INFO@
 all: all-am
 
 .SUFFIXES:
@@ -403,8 +405,8 @@ xtables/$(am__dirstamp):
 	@$(MKDIR_P) xtables
 	@: > xtables/$(am__dirstamp)
 
-xtables/libxt_dns.la: $(xtables_libxt_dns_la_OBJECTS) $(xtables_libxt_dns_la_DEPENDENCIES) $(EXTRA_xtables_libxt_dns_la_DEPENDENCIES) xtables/$(am__dirstamp)
-	$(AM_V_CCLD)$(xtables_libxt_dns_la_LINK) -rpath $(libdir)/xtables $(xtables_libxt_dns_la_OBJECTS) $(xtables_libxt_dns_la_LIBADD) $(LIBS)
+xtables/libxt_domain.la: $(xtables_libxt_domain_la_OBJECTS) $(xtables_libxt_domain_la_DEPENDENCIES) $(EXTRA_xtables_libxt_domain_la_DEPENDENCIES) xtables/$(am__dirstamp)
+	$(AM_V_CCLD)$(xtables_libxt_domain_la_LINK) -rpath $(libdir)/xtables $(xtables_libxt_domain_la_OBJECTS) $(xtables_libxt_domain_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -412,7 +414,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xtables_libxt_dns_la-libxt_dns.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xtables_libxt_domain_la-libxt_domain.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -435,12 +437,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
 
-xtables_libxt_dns_la-libxt_dns.lo: libxt_dns.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xtables_libxt_dns_la_CFLAGS) $(CFLAGS) -MT xtables_libxt_dns_la-libxt_dns.lo -MD -MP -MF $(DEPDIR)/xtables_libxt_dns_la-libxt_dns.Tpo -c -o xtables_libxt_dns_la-libxt_dns.lo `test -f 'libxt_dns.c' || echo '$(srcdir)/'`libxt_dns.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/xtables_libxt_dns_la-libxt_dns.Tpo $(DEPDIR)/xtables_libxt_dns_la-libxt_dns.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='libxt_dns.c' object='xtables_libxt_dns_la-libxt_dns.lo' libtool=yes @AMDEPBACKSLASH@
+xtables_libxt_domain_la-libxt_domain.lo: libxt_domain.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xtables_libxt_domain_la_CFLAGS) $(CFLAGS) -MT xtables_libxt_domain_la-libxt_domain.lo -MD -MP -MF $(DEPDIR)/xtables_libxt_domain_la-libxt_domain.Tpo -c -o xtables_libxt_domain_la-libxt_domain.lo `test -f 'libxt_domain.c' || echo '$(srcdir)/'`libxt_domain.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/xtables_libxt_domain_la-libxt_domain.Tpo $(DEPDIR)/xtables_libxt_domain_la-libxt_domain.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='libxt_domain.c' object='xtables_libxt_domain_la-libxt_domain.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xtables_libxt_dns_la_CFLAGS) $(CFLAGS) -c -o xtables_libxt_dns_la-libxt_dns.lo `test -f 'libxt_dns.c' || echo '$(srcdir)/'`libxt_dns.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xtables_libxt_domain_la_CFLAGS) $(CFLAGS) -c -o xtables_libxt_domain_la-libxt_domain.lo `test -f 'libxt_domain.c' || echo '$(srcdir)/'`libxt_domain.c
 
 mostlyclean-libtool:
 	-rm -f *.lo

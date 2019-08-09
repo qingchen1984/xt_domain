@@ -5,7 +5,7 @@
 #include <linux/udp.h>
 
 #include <linux/netfilter/x_tables.h>
-#include "xt_domain.h"
+#include "../include/xt_domain.h"
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("ChinaUnix - Platinum <cu.platinum@gmail.com>, http://weibo.com/bjpt");

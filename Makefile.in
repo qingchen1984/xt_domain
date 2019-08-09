@@ -98,7 +98,7 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/include/autoconfig.h
-CONFIG_CLEAN_FILES = iptables-ext-dns.spec
+CONFIG_CLEAN_FILES = iptables-ext-domain.spec
 CONFIG_CLEAN_VPATH_FILES =
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -157,14 +157,14 @@ CTAGS = ctags
 CSCOPE = cscope
 DIST_SUBDIRS = $(SUBDIRS)
 am__DIST_COMMON = $(srcdir)/Makefile.in \
-	$(srcdir)/iptables-ext-dns.spec.in \
+	$(srcdir)/iptables-ext-domain.spec.in \
 	$(top_srcdir)/include/autoconfig.h.in \
 	$(top_srcdir)/misc/compile $(top_srcdir)/misc/config.guess \
 	$(top_srcdir)/misc/config.sub $(top_srcdir)/misc/install-sh \
 	$(top_srcdir)/misc/ltmain.sh $(top_srcdir)/misc/missing \
 	ABOUT-NLS AUTHORS COPYING ChangeLog NEWS config.rpath \
-	misc/compile misc/config.guess misc/config.sub misc/install-sh \
-	misc/ltmain.sh misc/missing
+	misc/compile misc/config.guess misc/config.sub misc/depcomp \
+	misc/install-sh misc/ltmain.sh misc/missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -380,7 +380,7 @@ $(top_srcdir)/include/autoconfig.h.in:  $(am__configure_deps)
 
 distclean-hdr:
 	-rm -f include/autoconfig.h include/stamp-h1
-iptables-ext-dns.spec: $(top_builddir)/config.status $(srcdir)/iptables-ext-dns.spec.in
+iptables-ext-domain.spec: $(top_builddir)/config.status $(srcdir)/iptables-ext-domain.spec.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 
 mostlyclean-libtool:
