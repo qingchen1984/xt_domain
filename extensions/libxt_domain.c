@@ -25,7 +25,9 @@ static void
 domain_mt_init (struct xt_entry_match *match)
 {
     struct xt_domain_info *info = (void *)match->data;
-    /* inet_pton(PF_INET, "192.0.2.137", &info->dst.in); */
+
+	printf("match info is : %s\n",info->name) ;
+
 }
 
 
@@ -82,12 +84,16 @@ parse (int c, char **argv, int invert, unsigned int *flags,
 	return 1;
 }
 
+
 static void
-final_check (unsigned int flags)
+domain_check (unsigned int flags)
 {
 	printf("run in %s#%s%d\n",__func__,__FILE__,__LINE__) ;
-	if (!flags) xtables_error(PARAMETER_PROBLEM, "domain expection an option");
+	if (flags == 0){
+		xtables_error(PARAMETER_PROBLEM, "domain expection an option");
+	}
 }
+
 
 static void
 print (const void *ip, const struct xt_entry_match *match, int numeric)
@@ -116,7 +122,7 @@ static struct xtables_match domain = {
 	.help		= help,
     .init = domain_mt_init,
 	.parse		= parse,
-	.final_check	= final_check,
+	.final_check	= domain_check,
 	.print		= print,
 	.save		= save,
 	.extra_opts	= opts

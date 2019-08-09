@@ -1,4 +1,4 @@
-#define DOMAIN_VERSION		"0.0.3"
+#define DOMAIN_VERSION		"1.0.0"
 #define MAX_CHAR		50
 
 struct xt_domain_info
