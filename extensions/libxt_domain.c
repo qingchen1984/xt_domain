@@ -24,7 +24,7 @@ static struct option opts[] = {
 static void
 parse_name (char *name, struct xt_domain_info *info)
 {
-	int i, char_len = 0;
+	int i = 0 , char_len = 0;
 	int len = strlen(name);
 
 	if (len + 1 > MAX_CHAR)
@@ -32,8 +32,12 @@ parse_name (char *name, struct xt_domain_info *info)
 			   "The strings `%s' is too long (MAX_CHAR = %d",
 			   name, MAX_CHAR);
 
+	printf("run in %s#%s%d\n",__func__,__FILE__,__LINE__) ;
+
 	memcpy(info->name + 1, name, len);
 	memcpy(info->org_name, name, len);
+
+	printf("run in %s#%s%d\n",__func__,__FILE__,__LINE__) ;
 	info->name[0] = '.';
 
 	for (i = len; i >= 0; i--) {
@@ -45,7 +49,6 @@ parse_name (char *name, struct xt_domain_info *info)
 		}
 	}
 
-	/* 还包括一个前缀 "." */
 	info->len = len + 1;
 }
 
@@ -59,6 +62,7 @@ parse (int c, char **argv, int invert, unsigned int *flags,
 
 	switch (c) {
 		case '1':
+			printf("run in %s#%s%d\n",__func__,__FILE__,__LINE__) ;
 			parse_name(argv[optind - 1], info);
 			*flags = 1;
 			break;
@@ -73,12 +77,14 @@ parse (int c, char **argv, int invert, unsigned int *flags,
 static void
 final_check (unsigned int flags)
 {
+	printf("run in %s#%s%d\n",__func__,__FILE__,__LINE__) ;
 	if (!flags) xtables_error(PARAMETER_PROBLEM, "domain expection an option");
 }
 
 static void
 print (const void *ip, const struct xt_entry_match *match, int numeric)
 {
+	printf("run in %s#%s%d\n",__func__,__FILE__,__LINE__) ;
 	const struct xt_domain_info *info = (const struct xt_domain_info *)match->data;
 
 	printf("domain --name \"%s\"", info->org_name);
@@ -110,5 +116,6 @@ static struct xtables_match domain = {
 void
 _init (void)
 {
+	printf("run in %s#%s%d\n",__func__,__FILE__,__LINE__) ;
 	xtables_register_match(&domain);
 }
