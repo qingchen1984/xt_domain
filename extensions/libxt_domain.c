@@ -126,11 +126,7 @@ save (const void *ip, const struct xt_entry_match *match)
 static struct xtables_match domain = {
 	.name		= "domain",
 	.version	= XTABLES_VERSION,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,28)
-    .family = AF_INET,
-#else
 	.family = NFPROTO_IPV4,
-#endif
 	.size		= XT_ALIGN(sizeof(struct xt_domain_info)),
 	.userspacesize	= XT_ALIGN(sizeof(struct xt_domain_info)),
 	.help		= help,
