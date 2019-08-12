@@ -26,7 +26,7 @@ domain_mt_init (struct xt_entry_match *match)
 {
     struct xt_domain_info *info = (void *)match->data;
 
-	printf("match info is : %s\n",info->name) ;
+	printf("domain_mt_init run over !\n") ;
 
 }
 
@@ -34,6 +34,9 @@ domain_mt_init (struct xt_entry_match *match)
 static void
 parse_name (char *name, struct xt_domain_info *info)
 {
+
+	printf("parse run start !\n") ;
+
 	int i = 0 , char_len = 0;
 	int len = strlen(name);
 
@@ -60,12 +63,17 @@ parse_name (char *name, struct xt_domain_info *info)
 	}
 
 	info->len = len + 1;
+
+	printf("parse run over !\n") ;
 }
 
 static int
 parse (int c, char **argv, int invert, unsigned int *flags,
        const void *entry, struct xt_entry_match **match)
 {
+
+	printf("parse run start !\n") ;
+
 	struct xt_domain_info *info = (struct xt_domain_info *)(*match)->data;
 
 	xtables_check_inverse(optarg, &invert, &optind, 0, argv);
@@ -80,6 +88,8 @@ parse (int c, char **argv, int invert, unsigned int *flags,
 		default:
 			return 0;
 	}
+
+	printf("parse run over !\n") ;
 
 	return 1;
 }
@@ -116,7 +126,11 @@ save (const void *ip, const struct xt_entry_match *match)
 static struct xtables_match domain = {
 	.name		= "domain",
 	.version	= XTABLES_VERSION,
-	.family		= NFPROTO_IPV4,
+#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,28)
+    .family = AF_INET,
+#else
+	.family = NFPROTO_IPV4,
+#endif
 	.size		= XT_ALIGN(sizeof(struct xt_domain_info)),
 	.userspacesize	= XT_ALIGN(sizeof(struct xt_domain_info)),
 	.help		= help,
@@ -133,4 +147,5 @@ _init (void)
 {
 	printf("run in %s#%s%d\n",__func__,__FILE__,__LINE__) ;
 	xtables_register_match(&domain);
+	printf("xtables_resister_match run over !\n") ;
 }
