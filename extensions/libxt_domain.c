@@ -37,6 +37,8 @@ parse_name (char *name, struct xt_domain_info *info)
 
 	printf("parse run start !\n") ;
 
+	/*
+
 	int i = 0 , char_len = 0;
 	int len = strlen(name);
 
@@ -64,6 +66,8 @@ parse_name (char *name, struct xt_domain_info *info)
 
 	info->len = len + 1;
 
+	 */
+	printf("parse_name input parameter name is %s\n",name) ;
 	printf("parse run over !\n") ;
 }
 
